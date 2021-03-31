@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { Container } from 'react-bootstrap'
 
 
-export const ContainerComp = styled(Container)`
-
-  background-image: url('https://wallpaperaccess.com/full/3157890.jpg');
-  background-position:center;
+export const ContainerComp = styled.div`
+  width:100vw;
+  background-image: url('https://wallpaper.dog/large/17031660.jpg');
+  background-position:center center;
   background-size:cover;
   background-repeat: no-repeat;
-  height:400px;
+  height:500px;
   padding: 70px 10px;
 
 `;

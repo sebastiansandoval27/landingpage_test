@@ -1,18 +1,23 @@
 import React,{useState} from 'react';
-import { NavMenu,Menu, MenuItems, MenuItemsItem, Divider, Selected, Logo} from './NavbarStyled';
+import { NavMenu,Menu, MenuItems, MenuItemsItem, Divider, Selected, Logo, Burguer} from './NavbarStyled';
 import { NavLink } from "react-router-dom";
 
 const NavbarMenu = () => {
   
-  const [active, setActive] = useState(false);
+  const [menuActive, setActive] = useState(false);
 
   
   return (
-    <NavMenu>
+    <NavMenu menuActive={menuActive}>
       <Menu>
-        <Logo>Achoo <span>BETA</span></Logo>
-        <i class="fas fa-bars burguer" onClick={() => setActive(!active)}/>
-        <MenuItems active={active}>
+        <Logo menuActive={menuActive}>Achoo <span>BETA</span></Logo>
+        <Burguer 
+            className={`
+              ${menuActive ? 'active fas fa-times' : 'fas fa-bars'}
+            `} 
+            onClick={() => setActive(!menuActive)} 
+        />
+        <MenuItems menuActive={menuActive}>
           <MenuItemsItem >
             <NavLink to="/"><Selected> {`>`} </Selected> FEATURES</NavLink>
           </MenuItemsItem>
@@ -30,7 +35,15 @@ const NavbarMenu = () => {
             <NavLink to="/"><Selected> {`>`} </Selected> LOGIN</NavLink>
           </MenuItemsItem >
           <MenuItemsItem >
-            <NavLink to="/"><Selected> {`>`} </Selected> SIGNUP</NavLink>
+            <NavLink to="/" className="sign"><Selected> {`>`} </Selected> SIGNUP</NavLink>
+          </MenuItemsItem >
+          <MenuItemsItem >
+            <NavLink to="/">
+              <div className="flags">
+                <i className="flag fab fa-canadian-maple-leaf"></i>
+                <i className="down fas fa-angle-down"></i>
+              </div>
+            </NavLink>
           </MenuItemsItem >
         </MenuItems>
 
