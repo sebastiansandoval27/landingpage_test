@@ -14,7 +14,10 @@ export const NavMenu = styled.nav`
   justify-content:space-evenly;
 
   @media screen and ( min-width: 768px) {
-    padding: 0px 70px;
+    padding: 0px 40px;
+  }
+  @media screen and ( min-width: 992px) {
+    padding: 0px 15%;
   }
   
 `;
