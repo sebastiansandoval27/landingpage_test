@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 
 /* import { useDispatch, useSelector } from "react-redux"; */
 import { useDispatch, useSelector } from "react-redux";
-import { startChecking } from "../actions/auth";
+import { startCheck } from "../actions/auth";
 
 import PublicRoutes from "./PublicRoutes.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
@@ -14,14 +14,16 @@ import RegisterScreen from "../ui/screens/auth/RegisterScreen/RegisterScreen";
 const AppRouter = () => {
   const dispatch = useDispatch();
   const { checking, uid } = useSelector((state) => state.auth);
-
   useEffect(() => {
-    //dispatch(startChecking());
+    dispatch(startCheck());
   }, [dispatch]);
 
-  /* if (checking) {
+  if (checking) {
     return <h5>Espere...</h5>;
-  } */
+  } else {
+    console.log("checking: " + checking);
+    console.log("uid: " + uid);
+  }
 
   return (
     <Router>
@@ -31,22 +33,19 @@ const AppRouter = () => {
             exact
             path="/auth/login"
             component={LoginScreen}
-            /* isLogged={!!uid} */
-            isLogged={true}
+            isLogged={!!uid}
           />
           <PublicRoutes
             exact
             path="/auth/register"
             component={RegisterScreen}
-            /* isLogged={!!uid} */
-            isLogged={true}
+            isLogged={!!uid}
           />
           <PrivateRoutes
             exact
             path="/"
             component={HomeScreen}
-            /* isLogged={!!uid} */
-            isLogged={true}
+            isLogged={!!uid}
           />
           <Redirect to="/" />
         </Switch>

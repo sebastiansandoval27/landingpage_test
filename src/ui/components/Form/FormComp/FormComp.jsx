@@ -28,7 +28,7 @@ const FormComp = ({
         <form onSubmit={handleSubmit} autoComplete="off">
           {values.map((input) => (
             <InputField
-              key={input.id}
+              key={input.key}
               icon={input.icon}
               handleInputChange={handleInputChange}
               placeholder={input.placeholder}

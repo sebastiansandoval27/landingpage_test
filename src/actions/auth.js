@@ -21,6 +21,7 @@ export const startLogin = (email, password) => {
         })
       );
     } else {
+      console.log(body.msg, "error");
     }
   };
 };
@@ -45,11 +46,12 @@ export const startRegister = (email, name, password) => {
         })
       );
     } else {
+      console.log("Error");
     }
   };
 };
 
-export const startChecking = () => {
+export const startCheck = () => {
   return async (dispatch) => {
     const respuesta = await fetchWithToken("auth/renew");
     const body = await respuesta.json();
@@ -66,6 +68,7 @@ export const startChecking = () => {
       );
     } else {
       dispatch(checkingFinish());
+      console.log("TOKEN: ");
     }
   };
 };

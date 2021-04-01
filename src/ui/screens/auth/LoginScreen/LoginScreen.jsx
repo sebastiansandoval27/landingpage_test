@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Cover, LoginComp } from "./LoginScreenStyled";
 import { useForm } from "../../../../hooks/useForm";
+import { startLogin } from "../../../../actions/auth";
 import FormComp from "../../../components/Form/FormComp/FormComp";
 
 const LoginScreen = () => {
@@ -17,7 +18,7 @@ const LoginScreen = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log(Email, Password);
-    //dispatch(startLogin(lEmail, lPassword));
+    dispatch(startLogin(Email, Password));
   };
 
   const formFields = {
@@ -25,7 +26,7 @@ const LoginScreen = () => {
     handleInputChange: handleInputChangeLogin,
     values: [
       {
-        key: "1fl",
+        key: 1,
         icon: "fas fa-user",
         name: "Email",
         placeholder: "Email",
@@ -33,7 +34,7 @@ const LoginScreen = () => {
         type: "email",
       },
       {
-        key: "2fl",
+        key: 2,
         icon: "fas fa-lock",
         name: "Password",
         placeholder: "Password",

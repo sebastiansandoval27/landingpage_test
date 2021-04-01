@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Cover, RegisterComp } from "./RegisterScreenStyled";
 import { useForm } from "../../../../hooks/useForm";
 import FormComp from "../../../components/Form/FormComp/FormComp";
+import { startRegister } from "../../../../actions/auth";
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,7 @@ const RegisterScreen = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(Name, Email, Password);
-    //dispatch(startLogin(lEmail, lPassword));
+    dispatch(startRegister(Email, Name, Password));
   };
 
   const formFields = {
@@ -26,7 +26,7 @@ const RegisterScreen = () => {
     handleInputChange: handleInputChangeRegister,
     values: [
       {
-        key: "1fr",
+        key: 1,
         icon: "fas fa-user",
         name: "Name",
         placeholder: "Name",
@@ -34,7 +34,7 @@ const RegisterScreen = () => {
         type: "text",
       },
       {
-        key: "2fr",
+        key: 2,
         icon: "fas fa-envelope",
         name: "Email",
         placeholder: "Email",
@@ -42,7 +42,7 @@ const RegisterScreen = () => {
         type: "email",
       },
       {
-        key: "3",
+        key: 3,
         icon: "fas fa-lock",
         name: "Password",
         placeholder: "Password",
