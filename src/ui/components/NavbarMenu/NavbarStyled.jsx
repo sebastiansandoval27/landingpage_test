@@ -7,7 +7,7 @@ export const NavMenu = styled.nav`
   top: 0;
   left: 0;
   background-color: ${(props) =>
-    props.menuActive || !props.navColor ? "white" : "transparent"};
+    props.menuActive || !props.navColor ? "var(--white)" : "transparent"};
   transition: all 0.4s ease;
   display: flex;
   align-items: center;
@@ -33,12 +33,12 @@ export const Menu = styled.div`
 `;
 
 export const Burguer = styled.i`
-  color: ${(props) => (props.navColor ? "white" : "var(--pink)")};
+  color: ${(props) => (props.navColor ? "var(--white)" : "var(--pink)")};
   font-size: 20px;
   transition: all 0.4s ease;
 
   &.active {
-    color: #ff6c9f;
+    color: var(--pink);
   }
 
   @media screen and (min-width: 768px) {
@@ -49,49 +49,23 @@ export const Burguer = styled.i`
 export const Logo = styled.h2`
   font-size: 20px;
   color: ${(props) =>
-    props.menuActive || !props.navColor ? "#FF6C9F" : "white"};
+    props.menuActive || !props.navColor ? "var(--pink)" : "var(--white)"};
   font-family: Poppins;
   display: flex;
   align-items: center;
 
   span {
     font-size: 10px;
-    color: #989ca4;
+    color: var(--grey);
     align-self: flex-end;
     margin-left: 5px;
-  }
-`;
-
-export const MenuItems = styled.ul`
-  position: absolute;
-  top: 50px;
-  left: ${(props) => (props.menuActive ? "0" : "-100%")};
-  opacity: ${(props) => (props.menuActive ? "1" : "0")};
-  transition: all 0.4s ease;
-  width: 100%;
-  height: 100vh;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  @media screen and (min-width: 768px) {
-    position: static;
-    opacity: 1;
-    height: 50px;
-    width: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background: transparent;
   }
 `;
 
 export const MenuItemsItem = styled.li`
   width: 100%;
   height: 25px;
-  background: white;
+  background: var(--white);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -101,7 +75,8 @@ export const MenuItemsItem = styled.li`
 
   a {
     font-family: Poppins;
-    color: rgba(0, 0, 0, 0.6);
+
+    font-weight: 200;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -122,7 +97,7 @@ export const MenuItemsItem = styled.li`
       &::after {
         content: "";
         width: 100%;
-        border-top: 2px solid #ff6c9f;
+        border-top: 2px solid var(--pink);
         margin-top: 5px;
       }
     }
@@ -141,9 +116,9 @@ export const MenuItemsItem = styled.li`
     a {
       flex-direction: column;
       font-size: 12px;
-      color: #989ca4;
+
       i.flag {
-        color: white;
+        color: red;
         font-size: 14px;
       }
       i.down {
@@ -157,10 +132,43 @@ export const MenuItemsItem = styled.li`
       &.sign::after {
         content: "";
         width: 100%;
-        border-top: 2px solid #ff6c9f;
+        border-top: 2px solid var(--pink);
         margin-top: 3px;
       }
     }
+  }
+`;
+
+export const MenuItems = styled.ul`
+  position: absolute;
+  top: 50px;
+  left: ${(props) => (props.menuActive ? "0" : "-100%")};
+  opacity: ${(props) => (props.menuActive ? "1" : "0")};
+  transition: all 0.4s ease;
+  width: 100%;
+  height: 100vh;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  ${MenuItemsItem} {
+    a {
+      color: ${(props) =>
+        props.navColor ? "var(--white)" : "var(--grey-dark)"};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    position: static;
+    opacity: 1;
+    height: 50px;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
   }
 `;
 
@@ -169,12 +177,12 @@ export const Divider = styled.div`
   margin: 10px;
   align-self: flex-start;
   height: 1px;
-  background: #ff6c9f;
+  background: var(--pink);
 
   @media screen and (min-width: 768px) {
     width: 2px;
     height: 30%;
-    background: #989ca4;
+    background: var(--grey);
     align-self: center;
   }
 `;

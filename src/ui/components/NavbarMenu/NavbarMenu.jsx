@@ -42,7 +42,7 @@ const NavbarMenu = () => {
           onClick={() => setActive(!menuActive)}
           navColor={navColor}
         />
-        <MenuItems menuActive={menuActive}>
+        <MenuItems menuActive={menuActive} navColor={navColor}>
           <MenuItemsItem>
             <NavLink to="/">
               <Selected> {`>`} </Selected> FEATURES
