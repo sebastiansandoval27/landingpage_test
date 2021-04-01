@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 
 /* import { useDispatch, useSelector } from "react-redux"; */
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startChecking } from "../actions/auth";
 
 import PublicRoutes from "./PublicRoutes.jsx";
@@ -13,10 +13,10 @@ import RegisterScreen from "../ui/screens/auth/RegisterScreen/RegisterScreen";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
-  //const { checking, uid } = useSelector((state) => state.auth);
+  const { checking, uid } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(startChecking());
+    //dispatch(startChecking());
   }, [dispatch]);
 
   /* if (checking) {
@@ -32,21 +32,21 @@ const AppRouter = () => {
             path="/auth/login"
             component={LoginScreen}
             /* isLogged={!!uid} */
-            isLogged={false}
+            isLogged={true}
           />
           <PublicRoutes
             exact
             path="/auth/register"
             component={RegisterScreen}
             /* isLogged={!!uid} */
-            isLogged={false}
+            isLogged={true}
           />
           <PrivateRoutes
             exact
             path="/"
             component={HomeScreen}
             /* isLogged={!!uid} */
-            isLogged={false}
+            isLogged={true}
           />
           <Redirect to="/" />
         </Switch>

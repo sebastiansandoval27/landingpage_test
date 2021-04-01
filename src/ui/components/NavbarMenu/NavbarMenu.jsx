@@ -9,12 +9,14 @@ import {
   Logo,
   Burguer,
 } from "./NavbarStyled";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import flag from "../../../assets/images/flag.png";
 
 const NavbarMenu = () => {
   const [menuActive, setActive] = useState(false);
   const [navColor, setNavColor] = useState(true);
+  const { uid, name } = useSelector((state) => state.auth);
 
   const listenScrollEvent = (event) => {
     if (window.scrollY < 50) {
@@ -65,16 +67,28 @@ const NavbarMenu = () => {
             </NavLink>
           </MenuItemsItem>
           <Divider />
-          <MenuItemsItem>
-            <NavLink to="/">
-              <Selected> {`>`} </Selected> LOGIN
-            </NavLink>
-          </MenuItemsItem>
-          <MenuItemsItem>
-            <NavLink to="/" className="sign">
-              <Selected> {`>`} </Selected> SIGNUP
-            </NavLink>
-          </MenuItemsItem>
+          {!uid ? (
+            <>
+              <MenuItemsItem>
+                <NavLink to="/auth/login">
+                  <Selected> {`>`} </Selected> LOGIN
+                </NavLink>
+              </MenuItemsItem>
+              <MenuItemsItem>
+                <NavLink to="/auth/register" className="sign">
+                  <Selected> {`>`} </Selected> SIGNUP
+                </NavLink>
+              </MenuItemsItem>
+            </>
+          ) : (
+            <MenuItemsItem>
+              <NavLink to="/">
+                <Selected> {`>`} </Selected>{" "}
+                <i className="user fas fa-user"></i>
+                <h2 className="profile">PROFILE</h2>
+              </NavLink>
+            </MenuItemsItem>
+          )}
           <div className="flags">
             <div className="flag">
               <img src={flag} alt="England flag" />

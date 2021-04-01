@@ -21,7 +21,6 @@ export const startLogin = (email, password) => {
         })
       );
     } else {
-      //Swal.fire('Error',body.msg,'error');
     }
   };
 };
@@ -46,7 +45,6 @@ export const startRegister = (email, name, password) => {
         })
       );
     } else {
-      //Swal.fire('Error',body.msg + "Error acá",'error');
     }
   };
 };

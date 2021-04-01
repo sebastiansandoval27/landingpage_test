@@ -16,6 +16,7 @@ const LoginScreen = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log(Email, Password);
     //dispatch(startLogin(lEmail, lPassword));
   };
 
@@ -24,18 +25,20 @@ const LoginScreen = () => {
     handleInputChange: handleInputChangeLogin,
     values: [
       {
-        key: "1",
+        key: "1fl",
         icon: "fas fa-user",
-        name: "email",
+        name: "Email",
         placeholder: "Email",
         value: Email,
+        type: "email",
       },
       {
-        key: "2",
+        key: "2fl",
         icon: "fas fa-lock",
-        name: "password",
+        name: "Password",
         placeholder: "Password",
         value: Password,
+        type: "password",
       },
     ],
 

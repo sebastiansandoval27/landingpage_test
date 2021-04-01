@@ -11,7 +11,7 @@ const InputField = ({
 }) => {
   return (
     <InputFieldComp>
-      <i class={icon}></i>
+      <i className={icon}></i>
       <Input
         type={type}
         placeholder={placeholder}

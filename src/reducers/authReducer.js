@@ -2,8 +2,8 @@ import { types } from "../types/authTypes";
 
 const initialState = {
   checking: true,
-  //uid:null,
-  //name:null
+  uid: 1,
+  name: "Raul",
 };
 
 export const authReducer = (state = initialState, action) => {

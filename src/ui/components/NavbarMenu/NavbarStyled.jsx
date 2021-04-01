@@ -81,6 +81,10 @@ export const MenuItemsItem = styled.li`
     align-items: center;
     justify-content: center;
 
+    & i.user {
+      display: none;
+    }
+
     &::after {
       content: "";
       width: 100%;
@@ -115,7 +119,14 @@ export const MenuItemsItem = styled.li`
     a {
       flex-direction: column;
       font-size: 12px;
+      & i.user {
+        display: block;
+        font-size: 20px;
+      }
 
+      & h2.profile {
+        display: none;
+      }
       &.sign {
         display: flex;
         flex-direction: column;
@@ -172,6 +183,14 @@ export const MenuItems = styled.ul`
     margin-left: 10px;
     img {
       width: 100%;
+    }
+
+    &::after {
+      content: "";
+      width: 100%;
+      border-top: 2px solid transparent;
+      margin-top: 5px;
+      transition: all 0.4s ease;
     }
   }
   i.down {

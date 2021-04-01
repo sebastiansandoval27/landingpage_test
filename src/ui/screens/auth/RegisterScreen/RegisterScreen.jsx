@@ -17,6 +17,7 @@ const RegisterScreen = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    console.log(Name, Email, Password);
     //dispatch(startLogin(lEmail, lPassword));
   };
 
@@ -25,25 +26,28 @@ const RegisterScreen = () => {
     handleInputChange: handleInputChangeRegister,
     values: [
       {
-        key: "1",
+        key: "1fr",
         icon: "fas fa-user",
-        name: "nmae",
+        name: "Name",
         placeholder: "Name",
         value: Name,
+        type: "text",
       },
       {
-        key: "2",
+        key: "2fr",
         icon: "fas fa-envelope",
-        name: "email",
+        name: "Email",
         placeholder: "Email",
         value: Email,
+        type: "email",
       },
       {
         key: "3",
         icon: "fas fa-lock",
-        name: "password",
+        name: "Password",
         placeholder: "Password",
         value: Password,
+        type: "password",
       },
     ],
 
