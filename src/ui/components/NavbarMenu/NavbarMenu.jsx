@@ -10,6 +10,7 @@ import {
   Burguer,
 } from "./NavbarStyled";
 import { NavLink } from "react-router-dom";
+import flag from "../../../assets/images/flag.png";
 
 const NavbarMenu = () => {
   const [menuActive, setActive] = useState(false);
@@ -74,14 +75,12 @@ const NavbarMenu = () => {
               <Selected> {`>`} </Selected> SIGNUP
             </NavLink>
           </MenuItemsItem>
-          <MenuItemsItem>
-            <NavLink to="/">
-              <div className="flags">
-                <i className="flag fab fa-canadian-maple-leaf"></i>
-                <i className="down fas fa-angle-down"></i>
-              </div>
-            </NavLink>
-          </MenuItemsItem>
+          <div className="flags">
+            <div className="flag">
+              <img src={flag} alt="England flag" />
+            </div>
+            <i className="down fas fa-angle-down"></i>
+          </div>
         </MenuItems>
       </Menu>
     </NavMenu>

@@ -75,7 +75,6 @@ export const MenuItemsItem = styled.li`
 
   a {
     font-family: Poppins;
-
     font-weight: 200;
     display: flex;
     flex-direction: row;
@@ -117,14 +116,6 @@ export const MenuItemsItem = styled.li`
       flex-direction: column;
       font-size: 12px;
 
-      i.flag {
-        color: red;
-        font-size: 14px;
-      }
-      i.down {
-        font-size: 14px;
-        margin-left: 5px;
-      }
       &.sign {
         display: flex;
         flex-direction: column;
@@ -150,14 +141,42 @@ export const MenuItems = styled.ul`
   background: var(--white);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 
   ${MenuItemsItem} {
     a {
-      color: ${(props) =>
-        props.navColor ? "var(--white)" : "var(--grey-dark)"};
+      color: var(--grey-dark);
     }
+  }
+
+  .flag-link {
+    &:hover {
+      border: none;
+      text-decoration: none;
+
+      &::after {
+        content: none;
+        border: none;
+      }
+    }
+  }
+  .flags {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flags .flag {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    img {
+      width: 100%;
+    }
+  }
+  i.down {
+    font-size: 20px;
+    margin-left: 10px;
   }
 
   @media screen and (min-width: 768px) {
@@ -169,6 +188,35 @@ export const MenuItems = styled.ul`
     align-items: center;
     justify-content: space-between;
     background: transparent;
+
+    ${MenuItemsItem} {
+      a {
+        color: ${(props) =>
+          props.navColor ? "var(--white)" : "var(--grey-dark)"};
+      }
+    }
+
+    .flags {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flags .flag {
+      border-radius: 200px;
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    i.down {
+      font-size: 15px;
+      margin-left: 5px;
+      color: ${(props) =>
+        props.navColor ? "var(--white)" : "var(--grey-dark)"};
+    }
   }
 `;
 
