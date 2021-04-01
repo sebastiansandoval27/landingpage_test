@@ -9,6 +9,7 @@ export const OurPeopleComp = styled.section`
   align-items: center;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 50px;
 `;
 
 export const Title = styled.div`

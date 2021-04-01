@@ -1,14 +1,21 @@
+import React from "react";
+import styled from "styled-components";
+import Footer from "../Footer/Footer";
+import NavbarMenu from "../NavbarMenu/NavbarMenu";
 
-import React from 'react'
-import NavbarMenu from '../NavbarMenu/NavbarMenu';
+const LayoutComp = styled.div`
+  overflow: hidden;
+  width: 100%;
+`;
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
-    <div>
+    <LayoutComp>
       <NavbarMenu />
-      { children }
-    </div>
-  )
-}
+      {children}
+      <Footer />
+    </LayoutComp>
+  );
+};
 
-export default Layout
+export default Layout;
