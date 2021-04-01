@@ -7,8 +7,9 @@ import { startChecking } from "../actions/auth";
 
 import PublicRoutes from "./PublicRoutes.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
-import LoginScreen from "../ui/screens/auth/LoginScreen";
+import LoginScreen from "../ui/screens/auth/LoginScreen/LoginScreen";
 import HomeScreen from "../ui/screens/HomeScreen/HomeScreen";
+import RegisterScreen from "../ui/screens/auth/RegisterScreen/RegisterScreen";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -31,14 +32,21 @@ const AppRouter = () => {
             path="/auth/login"
             component={LoginScreen}
             /* isLogged={!!uid} */
-            isLogged={true}
+            isLogged={false}
+          />
+          <PublicRoutes
+            exact
+            path="/auth/register"
+            component={RegisterScreen}
+            /* isLogged={!!uid} */
+            isLogged={false}
           />
           <PrivateRoutes
             exact
             path="/"
             component={HomeScreen}
             /* isLogged={!!uid} */
-            isLogged={true}
+            isLogged={false}
           />
           <Redirect to="/" />
         </Switch>
