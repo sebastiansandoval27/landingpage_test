@@ -12,11 +12,12 @@ import {
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import flag from "../../../assets/images/flag.png";
+import { navItems } from "../../../data/navItems";
 
 const NavbarMenu = () => {
   const [menuActive, setActive] = useState(false);
   const [navColor, setNavColor] = useState(true);
-  const { uid, name } = useSelector((state) => state.auth);
+  const { uid } = useSelector((state) => state.auth);
 
   const listenScrollEvent = (event) => {
     if (window.scrollY < 50) {
@@ -46,26 +47,13 @@ const NavbarMenu = () => {
           navColor={navColor}
         />
         <MenuItems menuActive={menuActive} navColor={navColor}>
-          <MenuItemsItem>
-            <NavLink to="/">
-              <Selected> {`>`} </Selected> FEATURES
-            </NavLink>
-          </MenuItemsItem>
-          <MenuItemsItem>
-            <NavLink to="/">
-              <Selected> {`>`} </Selected> PRICING
-            </NavLink>
-          </MenuItemsItem>
-          <MenuItemsItem>
-            <NavLink to="/">
-              <Selected> {`>`} </Selected> ABOUT
-            </NavLink>
-          </MenuItemsItem>
-          <MenuItemsItem>
-            <NavLink to="/">
-              <Selected> {`>`} </Selected> CONTACT
-            </NavLink>
-          </MenuItemsItem>
+          {navItems.map((item) => (
+            <MenuItemsItem key={item.id}>
+              <NavLink to={item.route}>
+                <Selected> {`>`} </Selected> {item.name}
+              </NavLink>
+            </MenuItemsItem>
+          ))}
           <Divider />
           {!uid ? (
             <>
@@ -83,7 +71,6 @@ const NavbarMenu = () => {
           ) : (
             <MenuItemsItem>
               <NavLink to="/">
-                <Selected> {`>`} </Selected>{" "}
                 <i className="user fas fa-user"></i>
                 <h2 className="profile">PROFILE</h2>
               </NavLink>
