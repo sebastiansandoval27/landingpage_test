@@ -14,15 +14,13 @@ import RegisterScreen from "../ui/screens/auth/RegisterScreen/RegisterScreen";
 const AppRouter = () => {
   const dispatch = useDispatch();
   const { checking, uid } = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(startCheck());
   }, [dispatch]);
 
   if (checking) {
     return <h5>Espere...</h5>;
-  } else {
-    console.log("checking: " + checking);
-    console.log("uid: " + uid);
   }
 
   return (

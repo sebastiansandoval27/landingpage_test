@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Cover, LoginComp } from "./LoginScreenStyled";
 import { useForm } from "../../../../hooks/useForm";
@@ -7,17 +7,17 @@ import FormComp from "../../../components/Form/FormComp/FormComp";
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(true);
 
   const [formLoginValues, handleInputChangeLogin] = useForm({
-    Email: "",
-    Password: "",
+    Email: "david@gmail.com",
+    Password: "123456",
   });
 
   const { Email, Password } = formLoginValues;
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(Email, Password);
     dispatch(startLogin(Email, Password));
   };
 

@@ -9,15 +9,22 @@ import {
   Logo,
   Burguer,
 } from "./NavbarStyled";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import flag from "../../../assets/images/flag.png";
 import { navItems } from "../../../data/navItems";
+import { startLogout } from "../../../actions/auth";
 
 const NavbarMenu = () => {
+  const dispatch = useDispatch();
+
   const [menuActive, setActive] = useState(false);
   const [navColor, setNavColor] = useState(true);
   const { uid } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
 
   const listenScrollEvent = (event) => {
     if (window.scrollY < 50) {
@@ -70,10 +77,10 @@ const NavbarMenu = () => {
             </>
           ) : (
             <MenuItemsItem>
-              <NavLink to="/">
+              <div onClick={handleLogout}>
                 <i className="user fas fa-user"></i>
                 <h2 className="profile">PROFILE</h2>
-              </NavLink>
+              </div>
             </MenuItemsItem>
           )}
           <div className="flags">

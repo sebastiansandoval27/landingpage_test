@@ -1,14 +1,15 @@
 import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
 import { types } from "../types/authTypes";
+import swal from "sweetalert";
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
-    const respuesta = await fetchWithoutToken(
+    const response = await fetchWithoutToken(
       "auth/login",
       { email, password },
       "POST"
     );
-    const body = await respuesta.json();
+    const body = await response.json();
 
     if (body.ok) {
       localStorage.setItem("token", body.token);
@@ -21,19 +22,25 @@ export const startLogin = (email, password) => {
         })
       );
     } else {
-      console.log(body.msg, "error");
+      swal({
+        title: "Error",
+        text: body.msg,
+        icon: "error",
+        timer: 2000,
+        buttons: false,
+      });
     }
   };
 };
 
 export const startRegister = (email, name, password) => {
   return async (dispatch) => {
-    const respuesta = await fetchWithoutToken(
+    const response = await fetchWithoutToken(
       "auth/new",
       { name, email, password },
       "POST"
     );
-    const body = await respuesta.json();
+    const body = await response.json();
 
     if (body.ok) {
       localStorage.setItem("token", body.token);
@@ -46,29 +53,39 @@ export const startRegister = (email, name, password) => {
         })
       );
     } else {
-      console.log("Error");
+      swal({
+        title: "Error",
+        text: body.msg,
+        icon: "error",
+        timer: 2000,
+        buttons: false,
+      });
     }
   };
 };
 
 export const startCheck = () => {
   return async (dispatch) => {
-    const respuesta = await fetchWithToken("auth/renew");
-    const body = await respuesta.json();
+    const response = await fetchWithToken("auth/renew");
 
-    if (body.ok) {
-      localStorage.setItem("token", body.token);
-      localStorage.setItem("token-init-date", new Date().getTime());
+    if (response) {
+      const body = await response.json();
 
-      dispatch(
-        login({
-          uid: body.uid,
-          name: body.name,
-        })
-      );
+      if (body.ok) {
+        localStorage.setItem("token", body.token);
+        localStorage.setItem("token-init-date", new Date().getTime());
+
+        dispatch(
+          login({
+            uid: body.uid,
+            name: body.name,
+          })
+        );
+      } else {
+        dispatch(checkingFinish());
+      }
     } else {
       dispatch(checkingFinish());
-      console.log("TOKEN: ");
     }
   };
 };

@@ -11,6 +11,13 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  @media screen and (min-width: 480px) {
+    width: 300px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 350px;
+  }
 `;
 
 export const FormName = styled.div`
@@ -33,6 +40,13 @@ export const FormName = styled.div`
       margin: 10px 0px;
     }
   }
+  @media screen and (min-width: 768px) {
+    .logo-name {
+      h3 {
+        font-size: 50px;
+      }
+    }
+  }
 `;
 
 export const Logo = styled.h2`
@@ -47,6 +61,13 @@ export const Logo = styled.h2`
     color: var(--grey);
     align-self: flex-end;
     margin-left: 5px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    span {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -64,5 +85,9 @@ export const AccountQuestion = styled.div`
   a {
     margin-left: 5px;
     color: var(--pink);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
   }
 `;
