@@ -76,6 +76,7 @@ export const startUpdate = (uid, email, name) => {
     const body = await response.json();
 
     if (body.ok) {
+      dispatch(startGetUser(uid));
       swal({
         title: "Updated",
         text: body.msg,
@@ -83,6 +84,26 @@ export const startUpdate = (uid, email, name) => {
         timer: 2000,
         buttons: false,
       });
+    } else {
+      console.log(body.msg);
+      swal({
+        title: "Error",
+        text: body.msg,
+        icon: "error",
+        timer: 2000,
+        buttons: false,
+      });
+    }
+  };
+};
+
+export const startGetUser = (uid) => {
+  return async (dispatch) => {
+    const response = await fetchWithoutToken(`auth/user/`, { uid }, "POST");
+    const body = await response.json();
+
+    if (body.ok) {
+      dispatch(setUser(body.user));
     } else {
       console.log(body.msg);
       swal({
@@ -127,6 +148,11 @@ const checkingFinish = () => ({ type: types.authCheckingFinish });
 
 const login = (user) => ({
   type: types.authLogin,
+  payload: user,
+});
+
+const setUser = (user) => ({
+  type: types.authGetUser,
   payload: user,
 });
 

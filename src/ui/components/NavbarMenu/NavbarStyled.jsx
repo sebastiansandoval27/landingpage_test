@@ -263,6 +263,23 @@ export const MenuItems = styled.ul`
         color: ${(props) =>
           props.navColor ? "var(--white)" : "var(--grey-dark)"};
       }
+      a.sign.active {
+        &::after {
+          content: "";
+          width: 0%;
+          border-top: none;
+          margin-top: 0;
+        }
+      }
+      a.active {
+        &::after {
+          content: "";
+          width: 100%;
+          border-top: 2px solid var(--pink);
+          margin-top: 5px;
+          transition: all 0.4s ease;
+        }
+      }
     }
 
     .flags {
