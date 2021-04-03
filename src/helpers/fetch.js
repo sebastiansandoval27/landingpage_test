@@ -5,13 +5,14 @@ const fetchWithoutToken = (endpoint, data, method = "GET") => {
   const url = `${base_url}/${endpoint}`;
 
   if (method === "GET") {
-    return fetch(url);
+    return fetch(url, { mode: "no-cors" });
   } else {
     return fetch(url, {
       method,
       headers: {
         "Content-type": "application/json",
       },
+      mode: "no-cors",
       body: JSON.stringify(data),
     });
   }
@@ -31,6 +32,7 @@ const fetchWithToken = (endpoint, data, method = "GET") => {
         headers: {
           "x-token": token,
         },
+        mode: "no-cors",
       });
     } else {
       return fetch(url, {
@@ -39,6 +41,7 @@ const fetchWithToken = (endpoint, data, method = "GET") => {
           "Content-type": "application/json",
           "x-token": token,
         },
+        mode: "no-cors",
         body: JSON.stringify(data),
       });
     }
