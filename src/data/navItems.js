@@ -7,16 +7,16 @@ export const navItems = [
   {
     id: 2,
     name: "Features",
-    route: "/",
+    route: "/features",
   },
   {
     id: 3,
     name: "Pricing",
-    route: "/",
+    route: "/pricing",
   },
   {
     id: 4,
     name: "About Us",
-    route: "/",
+    route: "/about",
   },
 ];

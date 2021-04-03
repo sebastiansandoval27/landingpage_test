@@ -95,25 +95,6 @@ export const startUpdate = (uid, email, name) => {
     }
   };
 };
-export const startGetUser = () => {
-  return async (dispatch, _getState) => {
-    let uid = _getState().auth.uid;
-
-    const response = await fetchWithoutToken("auth/user", { uid }, "POST");
-    const body = await response.json();
-    if (body.ok) {
-      dispatch(setUser(body));
-    } else {
-      swal({
-        title: "Error",
-        text: body.msg,
-        icon: "error",
-        timer: 2000,
-        buttons: false,
-      });
-    }
-  };
-};
 
 export const startCheck = () => {
   return async (dispatch) => {
@@ -144,18 +125,8 @@ export const startCheck = () => {
 
 const checkingFinish = () => ({ type: types.authCheckingFinish });
 
-const setUser = (body) => ({
-  type: types.authGetUser,
-  payload: body.user,
-});
-
 const login = (user) => ({
   type: types.authLogin,
-  payload: user,
-});
-
-const getUser = (user) => ({
-  type: types.authGetUser,
   payload: user,
 });
 

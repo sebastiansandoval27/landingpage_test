@@ -10,6 +10,7 @@ import LoginScreen from "../ui/screens/auth/LoginScreen/LoginScreen";
 import HomeScreen from "../ui/screens/HomeScreen/HomeScreen";
 import RegisterScreen from "../ui/screens/auth/RegisterScreen/RegisterScreen";
 import SettingsScreen from "../ui/screens/SettingsScreen/SettingsScreen";
+import Loader from "../ui/components/Loader/Loader";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const AppRouter = () => {
   }, [dispatch]);
 
   if (checking) {
-    return <h5>Espere...</h5>;
+    return <Loader />;
   }
 
   return (
@@ -41,14 +42,14 @@ const AppRouter = () => {
           />
           <PrivateRoutes
             exact
-            path="/settings"
-            component={SettingsScreen}
+            path="/"
+            component={HomeScreen}
             isLogged={!!uid}
           />
           <PrivateRoutes
             exact
-            path="/"
-            component={HomeScreen}
+            path="/settings"
+            component={SettingsScreen}
             isLogged={!!uid}
           />
           <Redirect to="/" />

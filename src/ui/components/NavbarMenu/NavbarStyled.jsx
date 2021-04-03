@@ -64,7 +64,7 @@ export const Logo = styled.h2`
 
 export const MenuItemsItem = styled.li`
   width: 100%;
-  height: 25px;
+  height: auto;
   background: var(--white);
   display: flex;
   flex-direction: column;
@@ -75,6 +75,50 @@ export const MenuItemsItem = styled.li`
 
   i.user {
     display: none;
+  }
+
+  h2.profile {
+    font-family: Poppins;
+    font-weight: 200;
+    display: flex;
+  }
+
+  .sign {
+    &.active {
+      margin-left: 10px;
+      font-family: Poppins;
+      font-weight: 500;
+      color: var(-grey-dark);
+      transition: all 0.3 ease;
+      div.selected {
+        color: var(--pink);
+        font-size: 22px;
+      }
+    }
+  }
+
+  .active {
+    margin-left: 10px;
+    font-weight: 500;
+    transition: all 0.3 ease;
+    div.selected {
+      color: var(--pink);
+      font-size: 22px;
+    }
+  }
+
+  .logout {
+    background: var(--logout);
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 5px;
+  }
+
+  :last-of-type {
+    margin: 0px;
   }
 
   a {
@@ -116,22 +160,14 @@ export const MenuItemsItem = styled.li`
     margin: 0px;
     padding: 5px;
 
-    .logout {
-      background: var(--logout);
-      border: none;
-      outline: none;
-      color: white;
-      padding: 5px 10px;
-      margin: 0px 7px;
-      border-radius: 5px;
-    }
-
     i.user {
-      display: block;
+      display: flex;
       cursor: pointer;
       font-size: 20px;
-      color: var(--white);
+      color: ${(props) => (!props.navColor ? "var(--pink)" : "var(--white)")};
+      margin: 0px 10px;
     }
+
     h2.profile {
       display: none;
     }
@@ -147,7 +183,8 @@ export const MenuItemsItem = styled.li`
       &.sign::after {
         content: "";
         width: 100%;
-        border-top: 2px solid var(--pink);
+        border-top: ${(props) =>
+          !props.uid ? "none" : "2px solid var(--pink)"};
         margin-top: 3px;
       }
     }

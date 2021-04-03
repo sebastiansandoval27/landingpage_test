@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import bgLogin from "../../../../assets/images/bgLogin.jpg";
 
 export const LoginComp = styled.div`
   width: 100vw;
@@ -7,10 +6,7 @@ export const LoginComp = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(${bgLogin});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: var(--blue-dark);
 `;
 
 export const Cover = styled.div`

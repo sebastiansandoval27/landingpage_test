@@ -14,10 +14,8 @@ import { NavLink } from "react-router-dom";
 import flag from "../../../assets/images/flag.png";
 import { navItems } from "../../../data/navItems";
 import { startLogout } from "../../../actions/auth";
-import { useHistory } from "react-router-dom";
 
 const NavbarMenu = () => {
-  let history = useHistory();
   const dispatch = useDispatch();
 
   const [menuActive, setActive] = useState(false);
@@ -26,10 +24,6 @@ const NavbarMenu = () => {
 
   const handleLogout = () => {
     dispatch(startLogout());
-  };
-
-  const handleSettings = () => {
-    history.push("/settings");
   };
 
   const listenScrollEvent = (event) => {
@@ -62,8 +56,8 @@ const NavbarMenu = () => {
         <MenuItems menuActive={menuActive} navColor={navColor}>
           {navItems.map((item) => (
             <MenuItemsItem key={item.id}>
-              <NavLink to={item.route}>
-                <Selected> {`>`} </Selected> {item.name}
+              <NavLink to={item.route} exact activeClassName="active">
+                <Selected className="selected"> {`>`} </Selected> {item.name}
               </NavLink>
             </MenuItemsItem>
           ))}
@@ -82,11 +76,22 @@ const NavbarMenu = () => {
               </MenuItemsItem>
             </>
           ) : (
-            <MenuItemsItem>
-              <div onClick={handleSettings}>
-                <i className="user fas fa-user"></i>
-                <h2 className="profile">PROFILE</h2>
-              </div>
+            <MenuItemsItem navColor={navColor}>
+              <NavLink
+                to="/settings"
+                exact
+                className="sign"
+                uid={uid}
+                activeClassName="active"
+              >
+                <div className="user-profile">
+                  <i className="user fas fa-user"></i>
+                  <h2 className="profile">
+                    <Selected className="selected"> {`>`} </Selected> PROFILE
+                  </h2>
+                </div>
+              </NavLink>
+
               <button className="logout" onClick={handleLogout}>
                 Logout
               </button>

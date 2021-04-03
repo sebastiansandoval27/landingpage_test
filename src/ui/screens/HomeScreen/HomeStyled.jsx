@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import back from "../../../assets/images/back1.jpg";
 
 export const ContainerComp = styled.div`
   width: 100vw;
-  background-image: url(${back});
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
+  background: var(--blue-dark);
   padding: 70px 10px;
   display: flex;
   align-items: center;

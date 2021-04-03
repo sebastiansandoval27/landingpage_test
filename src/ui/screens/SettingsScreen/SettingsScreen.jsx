@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
 import FormComp from "../../components/Form/FormComp/FormComp";
 import Layout from "../../components/Layout/Layout";
-import { SettingsScreenComp } from "./SettingsLayout";
+import { SettingsScreenComp } from "./SettingsStyled";
 import { startUpdate } from "../../../actions/auth";
 
 const SettingsScreen = () => {
