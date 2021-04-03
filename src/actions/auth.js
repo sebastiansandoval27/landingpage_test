@@ -1,6 +1,7 @@
 import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
 import { types } from "../types/authTypes";
 import swal from "sweetalert";
+import { showErrors } from "../utils/errors";
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
@@ -25,7 +26,7 @@ export const startLogin = (email, password) => {
     } else {
       swal({
         title: "Error",
-        text: body.msg,
+        text: showErrors(body),
         icon: "error",
         timer: 2000,
         buttons: false,
@@ -55,16 +56,9 @@ export const startRegister = (email, name, password) => {
         })
       );
     } else {
-      let ss = Object.values(body.errors);
-      let errors = [];
-      for (let i = 0; i < ss.length; i++) {
-        errors.push(ss[i].msg);
-      }
-      let message = errors.toString();
-
       swal({
         title: "Error",
-        text: message,
+        text: showErrors(body),
         icon: "error",
         timer: 2000,
         buttons: false,
@@ -92,10 +86,9 @@ export const startUpdate = (uid, email, name) => {
         buttons: false,
       });
     } else {
-      console.log(body.msg);
       swal({
         title: "Error",
-        text: body.msg,
+        text: showErrors(body),
         icon: "error",
         timer: 2000,
         buttons: false,
@@ -115,7 +108,7 @@ export const startGetUser = (uid) => {
       console.log(body.msg);
       swal({
         title: "Error",
-        text: body.msg,
+        text: showErrors(body),
         icon: "error",
         timer: 2000,
         buttons: false,
