@@ -1,6 +1,7 @@
 const fetchWithoutToken = (endpoint, data, method = "GET") => {
   const base_url =
-    process.env.REACT_APP_NODE_API_URL || "http://localhost:4000/api";
+    process.env.NODE_API_URL ||
+    "https://git.heroku.com/landing-test-backend.git/api";
   const url = `${base_url}/${endpoint}`;
 
   if (method === "GET") {
@@ -18,7 +19,8 @@ const fetchWithoutToken = (endpoint, data, method = "GET") => {
 
 const fetchWithToken = (endpoint, data, method = "GET") => {
   const base_url =
-    process.env.REACT_APP_NODE_API_URL || "http://localhost:4000/api";
+    process.env.NODE_API_URL ||
+    "https://git.heroku.com/landing-test-backend.git/api";
   const url = `${base_url}/${endpoint}`;
   const token = localStorage.getItem("token") || "";
 
