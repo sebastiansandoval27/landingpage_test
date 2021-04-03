@@ -6,10 +6,9 @@ const fetchWithoutToken = (endpoint, data, method = "GET") => {
 
   if (method === "GET") {
     return fetch(url, {
-      mode: "no-cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Credentials": true,
       },
     });
   } else {
@@ -18,9 +17,9 @@ const fetchWithoutToken = (endpoint, data, method = "GET") => {
       headers: {
         "Content-type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Credentials": true,
       },
-      mode: "no-cors",
+
       body: JSON.stringify(data),
     });
   }
@@ -40,9 +39,8 @@ const fetchWithToken = (endpoint, data, method = "GET") => {
         headers: {
           "x-token": token,
           "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Credentials": true,
         },
-        mode: "no-cors",
       });
     } else {
       return fetch(url, {
@@ -51,9 +49,8 @@ const fetchWithToken = (endpoint, data, method = "GET") => {
           "Content-type": "application/json",
           "x-token": token,
           "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Credentials": true,
         },
-        mode: "no-cors",
         body: JSON.stringify(data),
       });
     }
