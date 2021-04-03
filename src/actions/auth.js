@@ -19,6 +19,7 @@ export const startLogin = (email, password) => {
         login({
           uid: body.uid,
           name: body.name,
+          email: body.email,
         })
       );
     } else {
@@ -50,8 +51,58 @@ export const startRegister = (email, name, password) => {
         login({
           uid: body.uid,
           name: body.name,
+          email: body.email,
         })
       );
+    } else {
+      swal({
+        title: "Error",
+        text: body.msg,
+        icon: "error",
+        timer: 2000,
+        buttons: false,
+      });
+    }
+  };
+};
+
+export const startUpdate = (uid, email, name) => {
+  return async (dispatch) => {
+    const response = await fetchWithoutToken(
+      `auth/update/${uid}`,
+      { name, email },
+      "POST"
+    );
+    const body = await response.json();
+
+    if (body.ok) {
+      swal({
+        title: "Updated",
+        text: body.msg,
+        icon: "success",
+        timer: 2000,
+        buttons: false,
+      });
+    } else {
+      console.log(body.msg);
+      swal({
+        title: "Error",
+        text: body.msg,
+        icon: "error",
+        timer: 2000,
+        buttons: false,
+      });
+    }
+  };
+};
+export const startGetUser = () => {
+  return async (dispatch, _getState) => {
+    let uid = _getState().auth.uid;
+
+    const response = await fetchWithoutToken("auth/user", { uid }, "POST");
+    const body = await response.json();
+    if (body.ok) {
+      dispatch(setUser(body));
     } else {
       swal({
         title: "Error",
@@ -79,6 +130,7 @@ export const startCheck = () => {
           login({
             uid: body.uid,
             name: body.name,
+            email: body.email,
           })
         );
       } else {
@@ -92,8 +144,18 @@ export const startCheck = () => {
 
 const checkingFinish = () => ({ type: types.authCheckingFinish });
 
+const setUser = (body) => ({
+  type: types.authGetUser,
+  payload: body.user,
+});
+
 const login = (user) => ({
   type: types.authLogin,
+  payload: user,
+});
+
+const getUser = (user) => ({
+  type: types.authGetUser,
   payload: user,
 });
 

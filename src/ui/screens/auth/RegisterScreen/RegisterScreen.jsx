@@ -56,6 +56,7 @@ const RegisterScreen = () => {
     question: "Already have an account?",
     linkQuestion: "Sign in",
     route: "/auth/login",
+    type: "register",
   };
 
   return (
@@ -70,6 +71,7 @@ const RegisterScreen = () => {
           route={formFields.route}
           question={formFields.question}
           linkQuestion={formFields.linkQuestion}
+          type={formFields.type}
         />
       </Cover>
     </RegisterComp>

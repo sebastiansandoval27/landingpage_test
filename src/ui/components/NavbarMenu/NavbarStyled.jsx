@@ -73,6 +73,10 @@ export const MenuItemsItem = styled.li`
   margin: 10px 0px;
   padding: 10px;
 
+  i.user {
+    display: none;
+  }
+
   a {
     font-family: Poppins;
     font-weight: 200;
@@ -80,10 +84,6 @@ export const MenuItemsItem = styled.li`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
-    & i.user {
-      display: none;
-    }
 
     &::after {
       content: "";
@@ -110,23 +110,36 @@ export const MenuItemsItem = styled.li`
     background: transparent;
     width: auto;
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: 0px;
     padding: 5px;
 
+    .logout {
+      background: var(--logout);
+      border: none;
+      outline: none;
+      color: white;
+      padding: 5px 10px;
+      margin: 0px 7px;
+      border-radius: 5px;
+    }
+
+    i.user {
+      display: block;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--white);
+    }
+    h2.profile {
+      display: none;
+    }
+
     a {
       flex-direction: column;
       font-size: 12px;
-      & i.user {
-        display: block;
-        font-size: 20px;
-      }
 
-      & h2.profile {
-        display: none;
-      }
       &.sign {
         display: flex;
         flex-direction: column;

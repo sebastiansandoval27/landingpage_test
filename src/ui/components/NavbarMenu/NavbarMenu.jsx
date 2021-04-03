@@ -14,8 +14,10 @@ import { NavLink } from "react-router-dom";
 import flag from "../../../assets/images/flag.png";
 import { navItems } from "../../../data/navItems";
 import { startLogout } from "../../../actions/auth";
+import { useHistory } from "react-router-dom";
 
 const NavbarMenu = () => {
+  let history = useHistory();
   const dispatch = useDispatch();
 
   const [menuActive, setActive] = useState(false);
@@ -24,6 +26,10 @@ const NavbarMenu = () => {
 
   const handleLogout = () => {
     dispatch(startLogout());
+  };
+
+  const handleSettings = () => {
+    history.push("/settings");
   };
 
   const listenScrollEvent = (event) => {
@@ -77,10 +83,13 @@ const NavbarMenu = () => {
             </>
           ) : (
             <MenuItemsItem>
-              <div onClick={handleLogout}>
+              <div onClick={handleSettings}>
                 <i className="user fas fa-user"></i>
                 <h2 className="profile">PROFILE</h2>
               </div>
+              <button className="logout" onClick={handleLogout}>
+                Logout
+              </button>
             </MenuItemsItem>
           )}
           <div className="flags">

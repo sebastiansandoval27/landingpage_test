@@ -2,8 +2,10 @@ import { types } from "../types/authTypes";
 
 const initialState = {
   checking: true,
-  uid: null,
-  name: null,
+  /* uid: "",
+  name: "",
+  email: "",
+  password: "", */
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -28,7 +30,12 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         checking: false,
       };
-
+    case types.authGetUser:
+      return {
+        ...state,
+        checking: false,
+        ...action.payload,
+      };
     default:
       return state;
   }

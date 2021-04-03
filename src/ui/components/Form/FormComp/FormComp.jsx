@@ -13,6 +13,7 @@ const FormComp = ({
   question,
   linkQuestion,
   route,
+  type,
 }) => {
   return (
     <>

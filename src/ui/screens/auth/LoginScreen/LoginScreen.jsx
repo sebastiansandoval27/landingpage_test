@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Cover, LoginComp } from "./LoginScreenStyled";
 import { useForm } from "../../../../hooks/useForm";
@@ -7,18 +7,17 @@ import FormComp from "../../../components/Form/FormComp/FormComp";
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(true);
 
   const [formLoginValues, handleInputChangeLogin] = useForm({
-    Email: "david@gmail.com",
-    Password: "123456",
+    email: "david@gmail.com",
+    password: "123456",
   });
 
-  const { Email, Password } = formLoginValues;
+  const { email, password } = formLoginValues;
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(startLogin(Email, Password));
+    dispatch(startLogin(email, password));
   };
 
   const formFields = {
@@ -28,17 +27,17 @@ const LoginScreen = () => {
       {
         key: 1,
         icon: "fas fa-user",
-        name: "Email",
+        name: "email",
         placeholder: "Email",
-        value: Email,
+        value: email,
         type: "email",
       },
       {
         key: 2,
         icon: "fas fa-lock",
-        name: "Password",
-        placeholder: "Password",
-        value: Password,
+        name: "password",
+        placeholder: "password",
+        value: password,
         type: "password",
       },
     ],
@@ -48,6 +47,7 @@ const LoginScreen = () => {
     question: "Not registered?",
     linkQuestion: "Create an account",
     route: "/auth/register",
+    type: "login",
   };
 
   return (
@@ -62,6 +62,7 @@ const LoginScreen = () => {
           route={formFields.route}
           question={formFields.question}
           linkQuestion={formFields.linkQuestion}
+          type={formFields.type}
         />
       </Cover>
     </LoginComp>
