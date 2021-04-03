@@ -1,7 +1,7 @@
 const fetchWithoutToken = (endpoint, data, method = "GET") => {
   const base_url =
     process.env.NODE_API_URL ||
-    "https://git.heroku.com/landing-test-backend.git/api";
+    "https://landing-test-backend.herokuapp.com/api";
   const url = `${base_url}/${endpoint}`;
 
   if (method === "GET") {
@@ -29,7 +29,7 @@ const fetchWithoutToken = (endpoint, data, method = "GET") => {
 const fetchWithToken = (endpoint, data, method = "GET") => {
   const base_url =
     process.env.NODE_API_URL ||
-    "https://git.heroku.com/landing-test-backend.git/api";
+    "https://landing-test-backend.herokuapp.com/api";
   const url = `${base_url}/${endpoint}`;
   const token = localStorage.getItem("token") || "";
 
