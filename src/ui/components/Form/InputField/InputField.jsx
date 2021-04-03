@@ -8,6 +8,7 @@ const InputField = ({
   placeholder,
   type,
   handleInputChange,
+  minLength,
 }) => {
   return (
     <InputFieldComp>
@@ -18,6 +19,8 @@ const InputField = ({
         name={name}
         value={value}
         onChange={handleInputChange}
+        required
+        minLength={minLength}
       />
     </InputFieldComp>
   );

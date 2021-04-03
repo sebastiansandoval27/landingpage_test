@@ -31,6 +31,7 @@ const LoginScreen = () => {
         placeholder: "Email",
         value: email,
         type: "email",
+        minLength: 3,
       },
       {
         key: 2,
@@ -39,6 +40,7 @@ const LoginScreen = () => {
         placeholder: "password",
         value: password,
         type: "password",
+        minLength: 6,
       },
     ],
 

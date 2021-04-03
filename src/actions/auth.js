@@ -55,9 +55,16 @@ export const startRegister = (email, name, password) => {
         })
       );
     } else {
+      let ss = Object.values(body.errors);
+      let errors = [];
+      for (let i = 0; i < ss.length; i++) {
+        errors.push(ss[i].msg);
+      }
+      let message = errors.toString();
+
       swal({
         title: "Error",
-        text: body.msg,
+        text: message,
         icon: "error",
         timer: 2000,
         buttons: false,

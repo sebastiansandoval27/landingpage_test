@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
 import FormComp from "../../components/Form/FormComp/FormComp";
 import Layout from "../../components/Layout/Layout";
-import { SettingsScreenComp } from "./SettingsStyled";
+import { Form, Info, SettingsScreenComp } from "./SettingsStyled";
 import { startUpdate } from "../../../actions/auth";
+import illustration from "../../../assets/images/meditation.png";
 
 const SettingsScreen = () => {
   const dispatch = useDispatch();
@@ -47,21 +48,26 @@ const SettingsScreen = () => {
 
     valueBtn: "SEND",
     title: "UPDATE",
-    type: "profile",
+    type: "Profile",
   };
 
   return (
     <Layout>
       <SettingsScreenComp>
-        <FormComp
-          handleSubmit={formFields.handleSubmit}
-          handleInputChange={formFields.handleInputChange}
-          values={formFields.values}
-          title={formFields.title}
-          valueBtn={formFields.valueBtn}
-          type={formFields.type}
-          route={"/"}
-        />
+        <Info>
+          <img src={illustration} alt="" />
+        </Info>
+        <Form>
+          <FormComp
+            handleSubmit={formFields.handleSubmit}
+            handleInputChange={formFields.handleInputChange}
+            values={formFields.values}
+            title={formFields.title}
+            valueBtn={formFields.valueBtn}
+            type={formFields.type}
+            route={"/"}
+          />
+        </Form>
       </SettingsScreenComp>
     </Layout>
   );

@@ -16,7 +16,7 @@ const FormComp = ({
   type,
 }) => {
   return (
-    <>
+    <div>
       <FormName>
         <div className="logo-name">
           <Logo>
@@ -36,6 +36,7 @@ const FormComp = ({
               name={input.name}
               type={input.type}
               value={input.value}
+              minLength={values.minLength}
             />
           ))}
           <BtnForm type="submit" value={valueBtn} />
@@ -45,7 +46,7 @@ const FormComp = ({
           <NavLink to={route}>{linkQuestion}</NavLink>
         </AccountQuestion>
       </Form>
-    </>
+    </div>
   );
 };
 

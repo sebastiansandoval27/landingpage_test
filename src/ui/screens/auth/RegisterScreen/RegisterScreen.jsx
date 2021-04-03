@@ -32,6 +32,7 @@ const RegisterScreen = () => {
         placeholder: "Name",
         value: Name,
         type: "text",
+        minLength: 3,
       },
       {
         key: 2,
@@ -40,6 +41,7 @@ const RegisterScreen = () => {
         placeholder: "Email",
         value: Email,
         type: "email",
+        minLength: 6,
       },
       {
         key: 3,
@@ -48,6 +50,7 @@ const RegisterScreen = () => {
         placeholder: "Password",
         value: Password,
         type: "password",
+        minLength: 6,
       },
     ],
 
